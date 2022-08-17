@@ -1,4 +1,4 @@
-name: balena
+name: deploy timmermannetjes/bocks_connector
 
 on:
   pull_request:
