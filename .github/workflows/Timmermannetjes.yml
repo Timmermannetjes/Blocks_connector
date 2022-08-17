@@ -6,6 +6,7 @@ on:
     branches:
     - master
 
+# replaced with local settings
 jobs:
   balena-deploy:
     runs-on: ubuntu-latest
