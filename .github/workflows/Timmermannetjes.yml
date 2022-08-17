@@ -1,0 +1,22 @@
+name: balena
+
+on:
+  pull_request:
+    types: [opened, synchronize, closed]
+    branches:
+    - master
+
+jobs:
+  balena-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: balena CLI Action
+        uses: balena-community/community-cli-action@1.0.0
+        with:
+          balena_token: ${{secrets.BALENA_TOKEN}}
+          balena_cli_commands: >
+            push jeroen5/blocks_connector --release-tag release ${{ github.ref_name }};
+          balena_cli_version: 13.7.1
