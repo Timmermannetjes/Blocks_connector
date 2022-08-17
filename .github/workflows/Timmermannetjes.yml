@@ -1,10 +1,8 @@
 name: deploy timmermannetjes/bocks_connector
 
 on:
-  pull_request:
-    types: [opened, synchronize, closed]
-    branches:
-    - master
+  push:
+    tags: "v*.*.0"
 
 # replaced with local settings
 jobs:
