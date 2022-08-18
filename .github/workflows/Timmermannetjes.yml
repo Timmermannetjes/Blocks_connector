@@ -2,7 +2,7 @@ name: deploy timmermannetjes/bocks_connector
 
 on:
   push:
-    tags: "v*.*.0"
+    tags: "v[0-9].[0-9].[0-9]"
 
 # replaced with local settings
 jobs:
