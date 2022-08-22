@@ -11,10 +11,20 @@ def invoke(services):
             print("Loading {name} plugin".format(name=SERVICE_NAME))
             return getConfigSection()
 
+    host = os.environ.get('INFLUXDB_HOST') or "http://{service}:8086".format(service=SERVICE_NAME)
+    organization = os.environ.get('INFLUXDB_ORG')
+    database = os.environ.get('INFLUXDB_DB') or "balena"
+    timeout = os.environ.get('INFLUXDB_TIMEOUT') or "1s"
 def getConfigSection():
+    username = os.environ.get('MQTT_USERNAME')
+    password = os.environ.get('MQTT_PASSWORD')
     output = """
+
+
 [[inputs.mqtt_consumer]]
 servers = ["mqtt://mqtt:1883"]
+username = "{username}"
+password = "{password}"
 topics = [
     "sensors/#",
     "balena/#"
